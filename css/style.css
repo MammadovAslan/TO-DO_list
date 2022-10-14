@@ -1,0 +1,164 @@
+* {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(90deg, rgb(2, 0, 36) 0%, rgba(121, 9, 118, 0.7959558824) 35%, rgb(0, 212, 255) 100%);
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+#wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#wrapper header {
+  color: #fff;
+  text-transform: uppercase;
+  margin: 5vh;
+}
+#wrapper #to_do_list {
+  max-width: 55vh;
+}
+#wrapper #to_do_list #header,
+#wrapper #to_do_list main {
+  background-color: #fff;
+  border-radius: 8px;
+}
+#wrapper #to_do_list #header form {
+  height: 5vh;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+#wrapper #to_do_list #header form input {
+  border: none;
+  outline: none;
+  font-size: 20px;
+  max-width: 40vh;
+  color: #a1a1a1;
+}
+#wrapper #to_do_list #header form #add_button {
+  color: aqua;
+  background: transparent;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 600;
+  float: right;
+}
+#wrapper #to_do_list #header form #add_button:hover {
+  opacity: 0.4;
+}
+#wrapper #to_do_list main {
+  margin-top: 1rem;
+  padding: 2rem;
+}
+#wrapper #to_do_list main .list_item {
+  display: flex;
+  align-items: center;
+  gap: 2vh;
+  border-bottom: 1px solid aqua;
+  padding-bottom: 2vh;
+  margin-bottom: 2vh;
+  transition: 0.2s ease;
+}
+#wrapper #to_do_list main .list_item:hover {
+  scale: 1.03;
+  border-color: #79307d;
+}
+#wrapper #to_do_list main .list_item .delete_button {
+  font-size: 16px;
+  color: #270f3f;
+}
+#wrapper #to_do_list main .list_item .delete_button:hover {
+  scale: 1.2;
+}
+#wrapper #to_do_list main .list_item .mark_task {
+  appearance: none;
+  border: 1px solid grey;
+  border-radius: 50%;
+  min-height: 15px;
+  min-width: 15px;
+  transition: 0.5s ease;
+  position: relative;
+  outline: none;
+}
+#wrapper #to_do_list main .list_item .mark_task:checked {
+  border: none;
+  rotate: 315deg;
+}
+#wrapper #to_do_list main .list_item .mark_task:checked:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  height: 2px;
+  width: 100%;
+  background-color: green;
+}
+#wrapper #to_do_list main .list_item .mark_task:checked:after {
+  content: "";
+  display: block;
+  position: absolute;
+  rotate: 90deg;
+  right: 70%;
+  top: 20%;
+  height: 2px;
+  width: 50%;
+  background-color: green;
+}
+#wrapper #to_do_list main .list_item .task_description {
+  word-break: break-word;
+}
+#wrapper #to_do_list #clear_button {
+  float: right;
+  font-size: 16px;
+  color: red;
+  background: transparent;
+}
+#wrapper #to_do_list #clear_button:hover {
+  opacity: 0.7;
+}
+#wrapper #to_do_list #no_tasks_added {
+  color: #a1a1a1;
+}
+
+@keyframes strike {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+.done {
+  color: red;
+  position: relative;
+}
+.done:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: red;
+  animation: strike 0.3s linear;
+}
