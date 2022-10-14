@@ -35,7 +35,13 @@ button {
   margin: 5vh;
 }
 #wrapper #to_do_list {
-  max-width: 55vh;
+  max-width: 65vh;
+  min-width: 55vh;
+}
+@media (max-width: 768px) {
+  #wrapper #to_do_list {
+    min-width: 70%;
+  }
 }
 #wrapper #to_do_list #header,
 #wrapper #to_do_list main {

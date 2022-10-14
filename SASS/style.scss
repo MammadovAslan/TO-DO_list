@@ -10,7 +10,11 @@
     margin: 5vh;
   }
   #to_do_list {
-    max-width: 55vh;
+    max-width: 65vh;
+    min-width: 55vh;
+    @media (max-width: 768px) {
+      min-width: 70%;
+    }
     #header,
     main {
       background-color: #fff;
