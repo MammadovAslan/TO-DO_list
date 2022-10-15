@@ -10,7 +10,7 @@
     margin: 5vh;
   }
   #to_do_list {
-    max-width: 65vh;
+    max-width: 55vh;
     min-width: 55vh;
     @media (max-width: 768px) {
       min-width: 70%;
@@ -32,6 +32,7 @@
           font-size: 20px;
           max-width: 40vh;
           color: #a1a1a1;
+          flex-grow: 2;
         }
         #add_button {
           color: aqua;
@@ -49,61 +50,63 @@
     main {
       margin-top: 1rem;
       padding: 2rem;
-      .list_item {
-        display: flex;
-        align-items: center;
-        gap: 2vh;
-        border-bottom: 1px solid aqua;
-        padding-bottom: 2vh;
-        margin-bottom: 2vh;
-        transition: 0.2s ease;
-        &:hover {
-          scale: 1.03;
-          border-color: #79307d;
-        }
-        .delete_button {
-          font-size: 16px;
-          color: #270f3f;
+      #list_items {
+        .list_item {
+          display: flex;
+          align-items: center;
+          gap: 2vh;
+          border-bottom: 1px solid aqua;
+          padding-bottom: 2vh;
+          margin-bottom: 2vh;
+          transition: 0.2s ease;
           &:hover {
-            scale: 1.2;
+            scale: 1.03;
+            border-color: #79307d;
           }
-        }
-        .mark_task {
-          appearance: none;
-          border: 1px solid grey;
-          border-radius: 50%;
-          min-height: 15px;
-          min-width: 15px;
-          transition: 0.5s ease;
-          position: relative;
-          outline: none;
-          &:checked {
-            border: none;
-            &:before {
-              content: "";
-              display: block;
-              position: absolute;
-              top: 50%;
-              height: 2px;
-              width: 100%;
-              background-color: green;
+          .delete_button {
+            font-size: 16px;
+            color: #270f3f;
+            &:hover {
+              scale: 1.2;
             }
-            &:after {
-              content: "";
-              display: block;
-              position: absolute;
-              rotate: 90deg;
-              right: 70%;
-              top: 20%;
-              height: 2px;
-              width: 50%;
-              background-color: green;
-            }
-            rotate: 315deg;
           }
-        }
-        .task_description {
-          word-break: break-word;
+          .mark_task {
+            appearance: none;
+            border: 1px solid grey;
+            border-radius: 50%;
+            min-height: 15px;
+            min-width: 15px;
+            transition: 0.5s ease;
+            position: relative;
+            outline: none;
+            &:checked {
+              border: none;
+              &:before {
+                content: "";
+                display: block;
+                position: absolute;
+                top: 50%;
+                height: 2px;
+                width: 100%;
+                background-color: green;
+              }
+              &:after {
+                content: "";
+                display: block;
+                position: absolute;
+                rotate: 90deg;
+                right: 70%;
+                top: 20%;
+                height: 2px;
+                width: 50%;
+                background-color: green;
+              }
+              rotate: 315deg;
+            }
+          }
+          .task_description {
+            word-break: break-word;
+          }
         }
       }
     }
