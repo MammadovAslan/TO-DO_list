@@ -59,8 +59,6 @@ form.addEventListener("submit", function (event) {
     listItemDiv.append(p);
     tasksContainer.prepend(listItemDiv);
     console.log();
-  } else {
-    alert("no empty imput allowed");
   }
   if (tasksContainer.childNodes.length !== 0) {
     clearButton.style.display = "block";
