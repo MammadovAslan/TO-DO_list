@@ -20,28 +20,29 @@ clearButton.addEventListener("click", () => {
 //*---------------------Add data from storage to page----------------------
 if (localStorage.getItem("data")) {
   data = JSON.parse(localStorage.getItem("data"));
-  // for (let i = data.length - 1; i >= 0; i--) {
-  //   tasksContainer.innerHTML += data[i].html;
-  // }
 
   for (let i = 0; i < data.length; i++) {
     tasksContainer.innerHTML += data[i].html;
   }
 
-  let divs = tasksContainer.querySelectorAll(".list_item");
+  let divs = [...tasksContainer.querySelectorAll(".list_item")];
   let checks = tasksContainer.querySelectorAll("input[type=checkbox]");
-  let deleteButtons = tasksContainer.querySelectorAll(".delete_button");
 
   //*---------------------Delete_button----------------------
-  deleteButtons.forEach((btn, index) => {
-    btn.addEventListener("click", function () {
-      divs[index].remove();
-      data.splice(index, 1);
-      localStorage.setItem("data", JSON.stringify(data));
+
+  divs.forEach((div) => {
+    div.addEventListener("click", function (event) {
+      if (event.target.classList.contains("delete_button")) {
+        let id = divs.lastIndexOf(div);
+        this.remove();
+        divs.splice(id, 1);
+        data.splice(id, 1);
+        localStorage.setItem("data", JSON.stringify(data));
+      }
     });
   });
 
-  //*---------------------Save checked taskt---------------------
+  //*---------------------Save checked task---------------------
 
   checks.forEach((check, index) => {
     let p = check.nextElementSibling;
@@ -66,6 +67,7 @@ if (localStorage.getItem("data")) {
   });
 }
 
+//-------------------------------------------------------------------
 //*-------------------------Add new task event-----------------------
 let listDivs = [];
 let listChecks = [];
@@ -116,12 +118,15 @@ form.addEventListener("submit", function (event) {
 
     addTaskInput.value = "";
     count++;
+
     listItemDiv.append(deleteTask);
     listItemDiv.append(checkbox);
     listItemDiv.append(p);
     tasksContainer.prepend(listItemDiv);
+
     listDivs.unshift(listItemDiv);
     listChecks.unshift(checkbox);
+
     saveData(listItemDiv, count);
   }
 });
